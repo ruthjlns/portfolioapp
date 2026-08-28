@@ -21,6 +21,24 @@ struct MainWorkspaceView: View {
                     .scaledToFill()
                     .ignoresSafeArea()
                 
+                // HEADER TEXT LAYER
+                VStack(alignment: .leading, spacing: 6) {
+                    // Main Title (Markdown automatically bolds **Designer's**)
+                    Text("A **Designer's**\nWorkspace")
+                        .font(.system(size: 32))
+                        .foregroundColor(Color(red: 0.38, green: 0.22, blue: 0.12))
+                        .lineSpacing(2)
+                    
+                    // Subtitle
+                    Text("Click an item to explore")
+                        .font(.system(size: 16))
+                        .italic()
+                        .foregroundColor(Color(red: 0.55, green: 0.40, blue: 0.30))
+                }
+                .padding(.leading, 49)
+                .padding(.top, 40) // Keeps text safely below the Dynamic Island / Notch
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                
                 // 2. INTERACTIVE HOTSPOTS LAYER
                 // The Wall Picture / Certificate Hotspot
                 Button(action: {
