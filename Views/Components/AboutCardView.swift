@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AboutCardView: View {
     // This allows the card to tell the main view to close it
-    var closeAction: () -> Void
+    //var closeAction: () -> Void
     
     var body: some View {
         VStack(spacing: 16) {
@@ -41,24 +41,12 @@ struct AboutCardView: View {
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
         .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: 10)
-        .overlay(
-            // A subtle close button in the corner
-            Button(action: {
-                closeAction()
-            }) {
-                Image(systemName: "xmark.circle.fill")
-                    .font(.title2)
-                    .foregroundColor(Color.gray.opacity(0.5))
-            }
-            .padding(20)
-            , alignment: .topTrailing
-        )
     }
 }
 
 #Preview {
     ZStack {
         Color.gray.opacity(0.3).ignoresSafeArea()
-        AboutCardView(closeAction: {})
+        AboutCardView()
     }
 }

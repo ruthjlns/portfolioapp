@@ -49,9 +49,7 @@ struct MainWorkspaceView: View {
                         }
                     
                     // Your new custom wireframe card!
-                    AboutCardView(closeAction: {
-                        withAnimation { viewModel.showAboutCard = false }
-                    })
+                    AboutCardView()
                     // Adds the cool pop-in animation
                     .transition(.scale(scale: 0.8).combined(with: .opacity))
                 }
