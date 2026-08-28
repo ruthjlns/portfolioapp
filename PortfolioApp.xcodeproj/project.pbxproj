@@ -16,6 +16,26 @@
 			path = PortfolioApp;
 			sourceTree = "<group>";
 		};
+		7DB9E80F3041758900C5866A /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7DB9E815304175B800C5866A /* ViewModels */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7DB9E819304175DB00C5866A /* Views */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7DB9E8273041764700C5866A /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +52,10 @@
 		7DB9E7F63041757100C5866A = {
 			isa = PBXGroup;
 			children = (
+				7DB9E8273041764700C5866A /* Resources */,
+				7DB9E819304175DB00C5866A /* Views */,
+				7DB9E815304175B800C5866A /* ViewModels */,
+				7DB9E80F3041758900C5866A /* Models */,
 				7DB9E8013041757100C5866A /* PortfolioApp */,
 				7DB9E8003041757100C5866A /* Products */,
 			);
@@ -62,6 +86,10 @@
 			);
 			fileSystemSynchronizedGroups = (
 				7DB9E8013041757100C5866A /* PortfolioApp */,
+				7DB9E80F3041758900C5866A /* Models */,
+				7DB9E815304175B800C5866A /* ViewModels */,
+				7DB9E819304175DB00C5866A /* Views */,
+				7DB9E8273041764700C5866A /* Resources */,
 			);
 			name = PortfolioApp;
 			packageProductDependencies = (
