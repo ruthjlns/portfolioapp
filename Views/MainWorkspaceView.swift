@@ -16,7 +16,9 @@ struct MainWorkspaceView: View {
             ZStack {
                 // 1. BACKGROUND LAYER
                 // Placeholder background (replace "room_bg" with your real image name later)
-                Color(red: 0.95, green: 0.95, blue: 0.95) // Light gray placeholder
+                Image("background")
+                    .resizable()
+                    .scaledToFill()
                     .ignoresSafeArea()
                 
                 // 2. INTERACTIVE HOTSPOTS LAYER
