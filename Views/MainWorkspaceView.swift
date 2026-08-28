@@ -22,39 +22,63 @@ struct MainWorkspaceView: View {
                     .ignoresSafeArea()
                 
                 // 2. INTERACTIVE HOTSPOTS LAYER
-                // The Wall Picture (Certificates/Achievements)
-                InteractiveHotspot(iconName: "trophy.fill", label: "Achievements") {
+                // The Wall Picture / Certificate Hotspot
+                Button(action: {
                     viewModel.activeSheet = .achievements
+                }) {
+                    Image("certificate") // Ensure this matches your Asset catalog name
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100.18, height: 160.05) // Adjust width/height to fit your room scale
+                        .contentShape(Rectangle()) // Ensures the full box area remains tappable
                 }
-                .position(x: geo.size.width * 0.45, y: geo.size.height * 0.35)
+                .position(x: geo.size.width * 0.50
+                          , y: geo.size.height * 0.36)
                 
                 // The iMac (Works)
-                InteractiveHotspot(iconName: "briefcase.fill", label: "Works") {
+                Button(action: {
                     viewModel.activeSheet = .works
+                }) {
+                    Image("imac") // Ensure this matches your Asset catalog name
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 417.7, height: 339.18) // Adjust width/height to fit your room scale
+                        .contentShape(Rectangle()) // Ensures the full box area remains tappable
                 }
-                .position(x: geo.size.width * 0.30, y: geo.size.height * 0.65)
-                
-                // The ID Badge (About Me)
-                InteractiveHotspot(iconName: "person.fill", label: "About Me") {
-                    withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
-                        viewModel.showAboutCard = true
-                    }
-                }
-                .position(x: geo.size.width * 0.75, y: geo.size.height * 0.85)
+                .position(x: geo.size.width * 0.41
+                          , y: geo.size.height * 0.72)
                 
                 // 3. CUSTOM OVERLAY (About Me Card)
-                if viewModel.showAboutCard {
-                    Color.black.opacity(0.3)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            withAnimation { viewModel.showAboutCard = false }
+                Button(action: {
+                    // 1. Trigger the card to open with a smooth spring animation
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                            viewModel.showAboutCard = true
                         }
-                    
-                    // Your new custom wireframe card!
-                    AboutCardView()
-                    // Adds the cool pop-in animation
-                    .transition(.scale(scale: 0.8).combined(with: .opacity))
+                    }) {
+                    Image("idcard") // Ensure this matches your Asset catalog name
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 151, height: 69.5) // Adjust width/height to fit your room scale
+                        .contentShape(Rectangle()) // Ensures the full box area remains tappable
                 }
+                .position(x: geo.size.width * 0.28
+                          , y: geo.size.height * 0.97)
+                
+                if viewModel.showAboutCard {
+                    // 2. Native iOS blur backdrop (frosted glass)
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                withAnimation { viewModel.showAboutCard = false }
+                            }
+                        
+                        // Your custom wireframe card!
+                        AboutCardView()
+                        .offset(y: -40) // Negative values move UP, positive values move DOWN
+                                // .offset(x: 20) // Use x to shift left/right if needed
+                            .transition(.scale(scale: 0.8).combined(with: .opacity))
+                    }
             }
         }
         // NATIVE SHEETS (For Works and Achievements)
