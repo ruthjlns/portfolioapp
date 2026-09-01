@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Certificate.png",
+      "filename" : "main-idcard@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "main-idcard@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "main-idcard@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

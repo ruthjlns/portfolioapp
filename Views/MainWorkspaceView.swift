@@ -2,88 +2,117 @@
 //  MainWorkspaceView.swift
 //  PortfolioApp
 //
-//  Created by William Kesuma on 28/08/26.
-//
 
 import SwiftUI
 
 struct MainWorkspaceView: View {
-    // Connects to your ViewModel
     @State private var viewModel = WorkspaceViewModel()
-    
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                // 1. BACKGROUND LAYER
-                // Placeholder background (replace "room_bg" with your real image name later)
-                Image("background")
+                // BACKGROUND LAYER
+                Image("main-background")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
                 
                 // HEADER TEXT LAYER
                 VStack(alignment: .leading, spacing: 6) {
-                    // Main Title (Markdown automatically bolds **Designer's**)
-                    Text("A **Designer's**\nWorkspace")
-                        .font(.system(size: 32))
-                        .foregroundColor(Color(red: 0.38, green: 0.22, blue: 0.12))
+                    Text("\(Text("A ").fontWeight(.light))\(Text("Designer's").fontWeight(.bold))\(Text("\nWorkspace").fontWeight(.light))")
+                        .font(.system(size: 28))
                         .lineSpacing(2)
                     
-                    // Subtitle
                     Text("Click an item to explore")
-                        .font(.system(size: 16))
+                        .font(.system(size: 15, weight: .thin))
                         .italic()
-                        .foregroundColor(Color(red: 0.55, green: 0.40, blue: 0.30))
                 }
-                .padding(.leading, 49)
-                .padding(.top, 40) // Keeps text safely below the Dynamic Island / Notch
+                .foregroundColor(Color("text-primary"))
+                .padding(.leading, 46)
+                .padding(.top, 25)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 
-                // 2. INTERACTIVE HOTSPOTS LAYER
-                // The Wall Picture / Certificate Hotspot
+                // INTERACTIVE HOTSPOTS LAYER
+                // Certificate Hotspot
                 Button(action: {
-                    viewModel.activeSheet = .achievements
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                        viewModel.showExpCard = true
+                    }
                 }) {
-                    Image("certificate") // Ensure this matches your Asset catalog name
+                    Image("main-certificate")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100.18, height: 160.05) // Adjust width/height to fit your room scale
-                        .contentShape(Rectangle()) // Ensures the full box area remains tappable
+                        .frame(width: 100.18, height: 160.05)
+                        .contentShape(Rectangle())
                 }
                 .position(x: geo.size.width * 0.50
                           , y: geo.size.height * 0.36)
                 
-                // The iMac (Works)
+                // iMac Hotspot
                 Button(action: {
-                    viewModel.activeSheet = .works
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                        viewModel.showWorksCard = true
+                    }
                 }) {
-                    Image("imac") // Ensure this matches your Asset catalog name
+                    Image("main-imac")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 417.7, height: 339.18) // Adjust width/height to fit your room scale
-                        .contentShape(Rectangle()) // Ensures the full box area remains tappable
+                        .frame(width: 417.7, height: 339.18)
+                        .contentShape(Rectangle())
                 }
                 .position(x: geo.size.width * 0.41
                           , y: geo.size.height * 0.72)
                 
-                // 3. CUSTOM OVERLAY (About Me Card)
+                // ID Card Hotspot
                 Button(action: {
-                    // 1. Trigger the card to open with a smooth spring animation
                         withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
                             viewModel.showAboutCard = true
                         }
                     }) {
-                    Image("idcard") // Ensure this matches your Asset catalog name
+                    Image("main-idcard")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 151, height: 69.5) // Adjust width/height to fit your room scale
-                        .contentShape(Rectangle()) // Ensures the full box area remains tappable
+                        .frame(width: 151, height: 69.5)
+                        .contentShape(Rectangle())
                 }
                 .position(x: geo.size.width * 0.28
                           , y: geo.size.height * 0.97)
                 
+                // ALL THE POP UP ACTIVATION
+                // Certificate Hotspot Card
+                if viewModel.showExpCard {
+                    // Native iOS blur backdrop
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                withAnimation { viewModel.showExpCard = false }
+                            }
+                        
+                        // AchievementsGridView Card
+                        AchievementsGridView()
+                        .offset(y: -50)
+                            .transition(.scale(scale: 0.8).combined(with: .opacity))
+                    }
+                
+                // iMac Hotspot Card
+                if viewModel.showWorksCard {
+                    // Native iOS blur backdrop
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                withAnimation { viewModel.showWorksCard = false }
+                            }
+                        
+                        // WorksListView Card
+                        WorksListView()
+                        .offset(y: -50)
+                            .transition(.scale(scale: 0.8).combined(with: .opacity))
+                    }
+                
+                // ID Card Hotspot Card
                 if viewModel.showAboutCard {
-                    // 2. Native iOS blur backdrop (frosted glass)
+                    // Native iOS blur backdrop
                         Rectangle()
                             .fill(.ultraThinMaterial)
                             .ignoresSafeArea()
@@ -91,28 +120,15 @@ struct MainWorkspaceView: View {
                                 withAnimation { viewModel.showAboutCard = false }
                             }
                         
-                        // Your custom wireframe card!
+                        // AboutCardView Card
                         AboutCardView()
-                        .offset(y: -40) // Negative values move UP, positive values move DOWN
-                                // .offset(x: 20) // Use x to shift left/right if needed
+                        .offset(y: -50)
                             .transition(.scale(scale: 0.8).combined(with: .opacity))
                     }
             }
         }
-        // NATIVE SHEETS (For Works and Achievements)
-        .sheet(item: $viewModel.activeSheet) { sheet in
-            switch sheet {
-            case .works:
-                Text("Works List View Placeholder") // Replace with WorksListView()
-            case .achievements:
-                Text("Achievements Grid Placeholder") // Replace with AchievementsGridView()
-            default:
-                EmptyView()
-            }
-        }
     }
 }
-
 #Preview {
     MainWorkspaceView()
 }

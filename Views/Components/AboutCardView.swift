@@ -2,45 +2,45 @@
 //  AboutCardView.swift
 //  PortfolioApp
 //
-//  Created by William Kesuma on 28/08/26.
-//
 
 import SwiftUI
 
 struct AboutCardView: View {
-    // This allows the card to tell the main view to close it
-    //var closeAction: () -> Void
-    
     var body: some View {
-        VStack(spacing: 16) {
+        VStack {
             Text("About Me")
-                .font(.headline)
+                .font(.title2)
                 .fontWeight(.bold)
-                .padding(.top, 24)
+                .padding(.top, 28)
+                .foregroundColor(Color("text-primary"))
             
-            // Profile Picture Placeholder (Gray Circle for now)
-            Circle()
-                .fill(Color.gray.opacity(0.5))
-                .frame(width: 150, height: 150)
-                // When you have your image, you'll swap the Circle() out for this:
-                // Image("ruth_profile").resizable().scaledToFill().frame(width: 150, height: 150).clipShape(Circle())
-            
+            // Profile Picture Placeholder
+            Image("about-profile")
+                .resizable()
+                .scaledToFill()
+                .scaleEffect(1.15)
+                .offset(x: 12, y: 46)
+                .frame(width: 249, height: 249)
+                .clipShape(Circle())
+                .padding(.top, 16)
+
             Text("Ruth Julien Sutanto")
-                .font(.title3)
-                .fontWeight(.bold)
+                .font(.headline)
+                .fontWeight(.semibold)
+                .padding(.top, 40)
+                .foregroundColor(Color("text-primary"))
             
-            Text("I've been passionate about art since elementary school, which led me to pursue Visual Communication Design at Universitas Ciputra Surabaya. I focus on graphic design across areas like pattern design, packaging, and merchandise, primarily using Adobe Illustrator, along with After Effects and Photoshop.")
-                .font(.footnote)
+            Text("I’ve been passionate about art since elementary school, which led me to pursue Visual Communication Design at Universitas Ciputra Surabaya. I focus on graphic design across areas like pattern design, packaging, and merchandise, primarily using Adobe Illustrator, along with After Effects and Photoshop.")
+                .font(.body)
                 .multilineTextAlignment(.center)
-                .foregroundColor(.gray)
-                .padding(.horizontal, 24)
-                .padding(.bottom, 32)
+                .foregroundColor(Color("text-primary"))
+                .padding(.horizontal, 28)
+                .padding(.top, 10)
+                .padding(.bottom, 70)
         }
-        .frame(width: 320)
-        // The pill shape background
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
-        .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: 10)
+        // The Pill Shape Background
+        .frame(width: 300)
+        .glassEffect(in: .rect(cornerRadius: 150))
     }
 }
 

@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "experiences-apple-developer-academy.png",
       "idiom" : "universal"
     }
   ],

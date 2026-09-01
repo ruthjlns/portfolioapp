@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Imac.png",
+      "filename" : "main-certificate@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "main-certificate@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "main-certificate@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
