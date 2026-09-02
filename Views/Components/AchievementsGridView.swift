@@ -6,42 +6,148 @@
 import SwiftUI
 
 struct AchievementsGridView: View {
-    // This allows the card to tell the main view to close it
-    //var closeAction: () -> Void
-    
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             Text("Experiences & Achievements")
-                .font(.headline)
+                .font(.title2)
                 .fontWeight(.bold)
-                .padding(.top, 24)
+                .padding(.top, 5)
+                .padding(.bottom, 8)
+                .foregroundColor(.textPrimary)
             
-            // Profile Picture Placeholder (Gray Circle for now)
-            Circle()
-                .fill(Color.gray.opacity(0.5))
-                .frame(width: 150, height: 150)
-                // When you have your image, you'll swap the Circle() out for this:
-                // Image("ruth_profile").resizable().scaledToFill().frame(width: 150, height: 150).clipShape(Circle())
-            
-            Text("Experiences")
-                .font(.title3)
-                .fontWeight(.bold)
-            
-            Text("I've been passionate about art since elementary school, which led me to pursue Visual Communication Design at Universitas Ciputra Surabaya. I focus on graphic design across areas like pattern design, packaging, and merchandise, primarily using Adobe Illustrator, along with After Effects and Photoshop.")
-                .font(.footnote)
-                .multilineTextAlignment(.center)
-                .foregroundColor(.gray)
-                .padding(.horizontal, 24)
-                .padding(.bottom, 32)
+            // Row 1
+            HStack(spacing: 14) {
+                
+                // Card 1: iSpark
+                VStack {
+                    // Profile Picture Placeholder
+                    Image("experiences-ispark")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 136, height: 174)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .padding(.top, 17)
+                    
+                    Text("iSpark\nInternational\nPitching\nCompetition")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textPrimary)
+                        .padding(.top, 8)
+                    
+                    Text("Third Prize")
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .italic()
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textPrimary)
+                        .padding(.bottom, 17)
+                }
+                // The Pill Shape Background
+                .frame(width: 160, height: 332)
+                .glassEffect(.regular.tint(Color.white.opacity(0.7)), in: .rect(cornerRadius: 12))
+                .shadow(color: .black.opacity(0.12), radius: 40, x: 0, y: 8)
+                .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
+                
+                // Card 2: Apple
+                VStack {
+                    // Profile Picture Placeholder
+                    Image("experiences-apple")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 136, height: 174)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .padding(.top, 17)
+                    
+                    Text("Apple Developer Academy @ UC\nCohort 2026")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textPrimary)
+                        .padding(.top, 8)
+                    
+                    Text("UI/UX\nDesigner")
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .italic()
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textPrimary)
+                        .padding(.bottom, 17)
+                }
+                // The Pill Shape Background
+                .frame(width: 160, height: 332)
+                .glassEffect(.regular.tint(Color.white.opacity(0.7)), in: .rect(cornerRadius: 12))
+                .shadow(color: .black.opacity(0.12), radius: 40, x: 0, y: 8)
+                .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
+            }
+            // Row 2
+            HStack(spacing: 14) {
+                
+                // Card 3: Kreativi Seni
+                VStack {
+                    // Profile Picture Placeholder
+                    Image("experiences-kreativi-seni")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 136, height: 174)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .padding(.top, 17)
+                    
+                    Text("Kreativi Seni National Competition")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textPrimary)
+                        .padding(.top, 8)
+                    
+                    Text("Harapan 1 & Juara Berbakat")
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .italic()
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textPrimary)
+                        .padding(.bottom, 17)
+                }
+                // The Pill Shape Background
+                .frame(width: 160, height: 332)
+                .glassEffect(.regular.tint(Color.white.opacity(0.7)), in: .rect(cornerRadius: 12))
+                .shadow(color: .black.opacity(0.12), radius: 40, x: 0, y: 8)
+                .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
+                
+                // Card 4: Ah Pek
+                VStack {
+                    // Profile Picture Placeholder
+                    Image("experiences-ahpek")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 136, height: 174)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .padding(.top, 17)
+                    
+                    Text("Ah Pek\nTypography Augmented\nReality Design")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textPrimary)
+                        .padding(.top, 8)
+                    
+                    Text("Top 20")
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .italic()
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textPrimary)
+                        .padding(.bottom, 17)
+                }
+                // The Pill Shape Background
+                .frame(width: 160, height: 332)
+                .glassEffect(.regular.tint(Color.white.opacity(0.7)), in: .rect(cornerRadius: 12))
+                .shadow(color: .black.opacity(0.12), radius: 40, x: 0, y: 8)
+                .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
+            }
         }
-        .frame(width: 320)
-        // The pill shape background
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
-        .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: 10)
     }
 }
-
 #Preview {
     ZStack {
         Color.gray.opacity(0.3).ignoresSafeArea()

@@ -40,7 +40,9 @@ struct AboutCardView: View {
         }
         // The Pill Shape Background
         .frame(width: 300)
-        .glassEffect(in: .rect(cornerRadius: 150))
+        .glassEffect(.regular.tint(Color.white.opacity(0.7)), in: .rect(cornerRadius: 150))
+        .shadow(color: .black.opacity(0.12), radius: 40, x: 0, y: 8)
+        .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
     }
 }
 

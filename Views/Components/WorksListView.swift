@@ -6,42 +6,134 @@
 import SwiftUI
 
 struct WorksListView: View {
-    // This allows the card to tell the main view to close it
-    //var closeAction: () -> Void
-    
     var body: some View {
-        VStack(spacing: 16) {
-            Text("Works")
-                .font(.headline)
+        VStack(spacing: 12) {
+            Text("Featured Works")
+                .font(.title2)
                 .fontWeight(.bold)
-                .padding(.top, 24)
+                .padding(.top, 5)
+                .padding(.bottom, 16)
+                .foregroundColor(.textPrimary)
             
-            // Profile Picture Placeholder (Gray Circle for now)
-            Circle()
-                .fill(Color.gray.opacity(0.5))
-                .frame(width: 150, height: 150)
-                // When you have your image, you'll swap the Circle() out for this:
-                // Image("ruth_profile").resizable().scaledToFill().frame(width: 150, height: 150).clipShape(Circle())
+            // Card 1: Product Design
+            ZStack(alignment: .bottomLeading) {
+                Image("works-product-design")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 319, height: 220)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                
+                let customShape = UnevenRoundedRectangle(
+                        topLeadingRadius: 0,
+                        bottomLeadingRadius: 12,
+                        bottomTrailingRadius: 12,
+                        topTrailingRadius: 0,
+                        style: .continuous
+                    )
+                customShape
+                    .frame(width: 319, height: 74)
+                    .glassEffect(.regular.tint(Color.white), in: customShape)
+                    .shadow(color: .black.opacity(0.12), radius: 40, x: 0, y: 8)
+                    .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Product Design")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.textPrimary)
+                    
+                    Text("HONOR Merchandise Design")
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .italic()
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.textPrimary)
+                }
+                .padding(.leading, 21)
+                .padding(.bottom, 16)
+            }
             
-            Text("Works")
-                .font(.title3)
-                .fontWeight(.bold)
+            // Card 2: UI/UX Design
+            ZStack(alignment: .bottomLeading) {
+                Image("works-uiux-design")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 319, height: 220)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                
+                let customShape = UnevenRoundedRectangle(
+                        topLeadingRadius: 0,
+                        bottomLeadingRadius: 12,
+                        bottomTrailingRadius: 12,
+                        topTrailingRadius: 0,
+                        style: .continuous
+                    )
+                customShape
+                    .frame(width: 319, height: 74)
+                    .glassEffect(.regular.tint(Color.white), in: customShape)
+                    .shadow(color: .black.opacity(0.12), radius: 40, x: 0, y: 8)
+                    .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("UI/UX Design")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.textPrimary)
+                    
+                    Text("Daycrumbs Child Diary App")
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .italic()
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.textPrimary)
+                }
+                .padding(.leading, 21)
+                .padding(.bottom, 16)
+            }
             
-            Text("Works")
-                .font(.footnote)
-                .multilineTextAlignment(.center)
-                .foregroundColor(.gray)
-                .padding(.horizontal, 24)
-                .padding(.bottom, 32)
+            // Card 3: Animation
+            ZStack(alignment: .bottomLeading) {
+                Image("works-animation")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 319, height: 220)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                
+                let customShape = UnevenRoundedRectangle(
+                        topLeadingRadius: 0,
+                        bottomLeadingRadius: 12,
+                        bottomTrailingRadius: 12,
+                        topTrailingRadius: 0,
+                        style: .continuous
+                    )
+                customShape
+                    .frame(width: 319, height: 74)
+                    .glassEffect(.regular.tint(Color.white), in: customShape)
+                    .shadow(color: .black.opacity(0.12), radius: 40, x: 0, y: 8)
+                    .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Animation")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.textPrimary)
+                    
+                    Text("Nomad Game Demo")
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .italic()
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.textPrimary)
+                }
+                .padding(.leading, 21)
+                .padding(.bottom, 16)
+            }
         }
-        .frame(width: 320)
-        // The pill shape background
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 60, style: .continuous))
-        .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: 10)
     }
 }
-
 #Preview {
     ZStack {
         Color.gray.opacity(0.3).ignoresSafeArea()
