@@ -8,7 +8,7 @@ import SwiftUI
 struct WorksListView: View {
     var body: some View {
         VStack(spacing: 12) {
-            Text("Featured Works")
+            Text("Featured Projects")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top, 5)
